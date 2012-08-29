@@ -15,7 +15,7 @@ namespace com_intel_lognative {
 	}
 
 	static JNINativeMethod method_table[] = {
-		{ "fibN", "(I;Ljava/lang/String;Ljava/lang/String)V", (void *) log }
+		{ "log", "(ILjava/lang/String;Ljava/lang/String;)V", (void *) log }
 	 };
 
 }
