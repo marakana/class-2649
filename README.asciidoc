@@ -1,0 +1,7 @@
+= Android Internals =
+
+* http://marakana.com.s3.amazonaws.com/intel/courseware/Android_Internals.html[Android Internals]
+
+== Resources ==
+
+* https://developers.google.com/events/io/sessions/gooio2012/109/[For Butter or Worse: Smoothing Out Performance in Android UIs]
