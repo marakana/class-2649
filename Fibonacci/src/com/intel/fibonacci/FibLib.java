@@ -2,6 +2,7 @@ package com.intel.fibonacci;
 
 public class FibLib {
 
+	
 	/** Fibonacci in Java */
 	public static long fibJ(long n) {
 		if(n==0) return 0;
