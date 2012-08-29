@@ -2,14 +2,14 @@
 
 namespace com_intel_fibonacci {
 
-	static jlong fib(jlong n) {
+	static jlong fibN(jlong n) {
 		if(n==0) return 0;
 		if(n==1) return 1;
-		return fib(n-1)+fib(n-2);
+		return fibN(n-1)+fibN(n-2);
 	}
 
 	static JNINativeMethod method_table[] = {
-		{ "fib", "(J)J", (void *) fib }
+		{ "fibN", "(J)J", (void *) fibN }
 	 };
 }
 
