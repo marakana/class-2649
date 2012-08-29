@@ -2,7 +2,6 @@ package com.intel.fibonacci;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.os.Debug;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -14,19 +13,10 @@ public class MainActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		Debug.startMethodTracing("Fibonacci.trace");
-		
 		setContentView(R.layout.activity_main);
 
 		editN = (EditText) findViewById(R.id.edit_n);
 		textOut = (TextView) findViewById(R.id.text_out);
-	}
-
-	@Override
-	protected void onStop() {
-		super.onStop();
-		Debug.stopMethodTracing();
 	}
 
 	static final int LOOP = 10;
