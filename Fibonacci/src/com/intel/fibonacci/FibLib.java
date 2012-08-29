@@ -26,7 +26,10 @@ public class FibLib {
 		System.loadLibrary("Fibonacci");
 	}
 	
+	/** Fibonacci Native - Recursive */
 	public static native long fibN(long n);
+	
+	/** Fibonacci Native - Iterative */
 	public static native long fibNI(long n);
 
 }

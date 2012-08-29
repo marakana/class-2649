@@ -26,20 +26,20 @@ public class MainActivity extends Activity {
 		long n = Long.parseLong(editN.getText().toString());
 
 		long resultJ = 0, resultN = 0;
-		long start = System.currentTimeMillis();
+		long start = System.nanoTime();
 		for (int i = 0; i < LOOP; i++) {
-			resultJ = FibLib.fibJ(n);
+			resultJ = FibLib.fibJI(n);
 		}
-		long timeJ = System.currentTimeMillis() - start;
-		textOut.append(String.format("\nfibJ(%d)=%d (~%d ms)", n, resultJ,
+		long timeJ = System.nanoTime() - start;
+		textOut.append(String.format("\nfibJI(%d)=%d (~%d ns)", n, resultJ,
 				timeJ / LOOP));
 
-		start = System.currentTimeMillis();
+		start = System.nanoTime();
 		for (int i = 0; i < LOOP; i++) {
-			resultN = FibLib.fibN(n);
+			resultN = FibLib.fibNI(n);
 		}
-		long timeN = System.currentTimeMillis() - start;
-		textOut.append(String.format("\nfibN(%d)=%d (~%d ms)", n, resultN,
+		long timeN = System.nanoTime() - start;
+		textOut.append(String.format("\nfibNI(%d)=%d (~%d ns)", n, resultN,
 				timeN / LOOP));
 
 	}
