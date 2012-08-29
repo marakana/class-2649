@@ -4,4 +4,5 @@
 
 == Resources ==
 
+* http://mrkn.co/f/595[Eclipse Video]
 * https://developers.google.com/events/io/sessions/gooio2012/109/[For Butter or Worse: Smoothing Out Performance in Android UIs]
