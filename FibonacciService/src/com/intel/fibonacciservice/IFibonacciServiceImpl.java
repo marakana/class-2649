@@ -35,13 +35,13 @@ public class IFibonacciServiceImpl extends IFibonacciService.Stub {
 		
 		switch(request.getAlgoritm()) {
 		case Request.ALGORITHM_JAVA_RECURSIVE:
-			result = FibLib.fibJ(request.getN());
+			result = FibLib.fibJ(request.getN()); break;
 		case Request.ALGORITHM_JAVA_ITERATIVE:
-			result = FibLib.fibJI(request.getN());
+			result = FibLib.fibJI(request.getN()); break;
 		case Request.ALGORITHM_NATIVE_RECURSIVE:
-			result = FibLib.fibN(request.getN());
+			result = FibLib.fibN(request.getN()); break;
 		case Request.ALGORITHM_NATIVE_ITERATIVE:
-			result = FibLib.fibNI(request.getN());
+			result = FibLib.fibNI(request.getN()); break;
 		}
 		
 		time = System.currentTimeMillis() - time;
