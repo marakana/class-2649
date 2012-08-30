@@ -11,13 +11,20 @@ public class FibonacciManager {
 	static final Intent INTENT = new Intent("com.intel.fibonaccicommon.IFibonacciService");
 	Context context;
 	IFibonacciService service;
-
+	FibonacciServiceConnection connection;
 
 	/** Constructor */
 	public FibonacciManager(Context context) {
 		this.context = context;
+		connection = new FibonacciServiceConnection();
+		context.bindService(INTENT, connection, Context.BIND_AUTO_CREATE);
+	}
+
+	@Override
+	protected void finalize() throws Throwable {
+		super.finalize();
 		
-		context.bindService(INTENT, new FibonacciServiceConnection(), Context.BIND_AUTO_CREATE);
+		context.unbindService(connection);
 	}
 
 	class FibonacciServiceConnection implements ServiceConnection {
