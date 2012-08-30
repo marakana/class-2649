@@ -79,5 +79,13 @@ public class FibonacciManager {
 		}
 	}
 
+	public Response fib(Request request) {
+		try {
+			return service.fib(request);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 
 }

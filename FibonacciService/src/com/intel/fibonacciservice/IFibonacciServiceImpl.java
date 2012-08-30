@@ -45,7 +45,8 @@ public class IFibonacciServiceImpl extends IFibonacciService.Stub {
 		}
 		
 		time = System.currentTimeMillis() - time;
-		return new Response(result, time);
+
+		return new Response(time, result);
 	}
 
 }
