@@ -2,7 +2,6 @@ package com.intel.fibonacciservice;
 
 public class FibLib {
 
-	
 	/** Fibonacci in Java - Recursive */
 	public static long fibJ(long n) {
 		if(n==0) return 0;
