@@ -1,6 +1,5 @@
 = Android Internals =
 
-* http://marakana.com.s3.amazonaws.com/intel/courseware/Android_Internals.html[Android Internals]
 
 == Resources ==
 
