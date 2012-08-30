@@ -6,3 +6,8 @@
 * http://mrkn.co/f/595[Eclipse Video]
 * https://developers.google.com/events/io/sessions/gooio2012/109/[For Butter or Worse: Smoothing Out Performance in Android UIs]
 * http://software.intel.com/en-us/articles/intel-hardware-accelerated-execution-manager/[Intel® Hardware Accelerated Execution Manager]
+
+== Parking Lot ==
+
+* Why is Serialization not efficient?
+
