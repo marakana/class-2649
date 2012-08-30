@@ -1,6 +1,7 @@
 package com.intel.fibonaccicommon;
 
 import com.intel.fibonaccicommon.Request;
+import com.intel.fibonaccicommon.Response;
 
 interface IFibonacciService {
 	long fibJ(long n);
@@ -8,5 +9,5 @@ interface IFibonacciService {
 	long fibN(long n);
 	long fibNI(long n);
 	
-	long fib(in Request request);
+	Response fib(in Request request);
 }
