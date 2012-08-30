@@ -3,6 +3,8 @@ package com.intel.fibonacciservice;
 import android.os.RemoteException;
 
 import com.intel.fibonaccicommon.IFibonacciService;
+import com.intel.fibonaccicommon.Request;
+import com.intel.fibonaccicommon.Response;
 
 public class IFibonacciServiceImpl extends IFibonacciService.Stub {
 
@@ -24,6 +26,26 @@ public class IFibonacciServiceImpl extends IFibonacciService.Stub {
 	@Override
 	public long fibNI(long n) throws RemoteException {
 		return FibLib.fibNI(n);
+	}
+
+	@Override
+	public Response fib(Request request) throws RemoteException {
+		long result = -1;
+		long time = System.currentTimeMillis();
+		
+		switch(request.getAlgoritm()) {
+		case Request.ALGORITHM_JAVA_RECURSIVE:
+			result = FibLib.fibJ(request.getN());
+		case Request.ALGORITHM_JAVA_ITERATIVE:
+			result = FibLib.fibJI(request.getN());
+		case Request.ALGORITHM_NATIVE_RECURSIVE:
+			result = FibLib.fibN(request.getN());
+		case Request.ALGORITHM_NATIVE_ITERATIVE:
+			result = FibLib.fibNI(request.getN());
+		}
+		
+		time = System.currentTimeMillis() - time;
+		return new Response(result, time);
 	}
 
 }

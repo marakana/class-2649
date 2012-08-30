@@ -4,6 +4,11 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Request implements Parcelable {
+	public static final int ALGORITHM_JAVA_RECURSIVE=1;
+	public static final int ALGORITHM_JAVA_ITERATIVE=2;
+	public static final int ALGORITHM_NATIVE_RECURSIVE=3;
+	public static final int ALGORITHM_NATIVE_ITERATIVE=4;
+	
 	private int algoritm;
 	private long n;
 	
