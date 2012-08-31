@@ -2,6 +2,7 @@ package com.intel.fibonacciservice;
 
 import android.os.RemoteException;
 
+import com.intel.fibonaccicommon.IFibListener;
 import com.intel.fibonaccicommon.IFibonacciService;
 import com.intel.fibonaccicommon.Request;
 import com.intel.fibonaccicommon.Response;
@@ -47,6 +48,13 @@ public class IFibonacciServiceImpl extends IFibonacciService.Stub {
 		time = System.currentTimeMillis() - time;
 
 		return new Response(time, result);
+	}
+
+	@Override
+	public void asyncFib(Request request, IFibListener listener)
+			throws RemoteException {
+		Response response = this.fib(request);
+		listener.onResponse(response);
 	}
 
 }
