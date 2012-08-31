@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.intel.fibonaccicommon.FibonacciManager;
+import com.intel.fibonaccicommon.IFibListener;
 import com.intel.fibonaccicommon.Request;
 import com.intel.fibonaccicommon.Response;
 
@@ -35,18 +36,25 @@ public class MainActivity extends Activity {
 	public void onClickButtonGo(View v) {
 		long n = Long.parseLong(editN.getText().toString());
 
-		Response responseJ, responseN;
-
-		// Java
-		responseJ = manager.fib( new Request(Request.ALGORITHM_JAVA_RECURSIVE, n) );
-		textOut.append(String.format("\nfibJ(%d)=%d (~%d ms)", n, responseJ.getResult(),
-				responseJ.getTime()));
-
-		// Native
-		responseN = manager.fib( new Request(Request.ALGORITHM_NATIVE_RECURSIVE, n) );
-		textOut.append(String.format("\nfibN(%d)=%d (~%d ms)", n, responseN.getResult(),
-				responseN.getTime()));
-
+		IFibListener listener = new IFibListenerImpl();
+		manager.asyncFib(new Request(Request.ALGORITHM_JAVA_RECURSIVE, n),
+				listener);
 	}
 
+	class IFibListenerImpl extends IFibListener.Stub {
+		
+		@Override
+		public void onResponse(Response response) throws RemoteException {
+			final Response r = response;
+			MainActivity.this.runOnUiThread( new Runnable() {
+
+				@Override
+				public void run() {
+					textOut.append(String.format("\nfib()=%d (~%d ms)",
+							r.getResult(), r.getTime()));
+				}
+				
+			});
+		}
+	}
 }

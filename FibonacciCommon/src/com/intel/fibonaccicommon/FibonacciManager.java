@@ -88,4 +88,11 @@ public class FibonacciManager {
 		}
 	}
 
+	public void asyncFib(Request request, IFibListener listener) {
+		try {
+			service.asyncFib(request, listener);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+	}
 }
