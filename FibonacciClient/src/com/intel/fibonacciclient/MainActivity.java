@@ -2,6 +2,8 @@ package com.intel.fibonacciclient;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.os.RemoteException;
 import android.view.View;
 import android.widget.EditText;
@@ -41,20 +43,24 @@ public class MainActivity extends Activity {
 				listener);
 	}
 
+	Handler responseHandler = new Handler() {
+		@Override
+		public void handleMessage(Message msg) {
+			super.handleMessage(msg);
+			if (msg.what!=MSG_CODE) return;
+			Response r = (Response) msg.obj;
+			textOut.append(String.format("\nfib()=%d (~%d ms)", r.getResult(),
+					r.getTime()));
+		}
+	};
+
+	static final int MSG_CODE = 47;
 	class IFibListenerImpl extends IFibListener.Stub {
-		
+
 		@Override
 		public void onResponse(Response response) throws RemoteException {
-			final Response r = response;
-			MainActivity.this.runOnUiThread( new Runnable() {
-
-				@Override
-				public void run() {
-					textOut.append(String.format("\nfib()=%d (~%d ms)",
-							r.getResult(), r.getTime()));
-				}
-				
-			});
+			Message msg = responseHandler.obtainMessage(MSG_CODE, response);
+			responseHandler.sendMessage(msg);
 		}
 	}
 }
