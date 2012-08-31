@@ -15,8 +15,8 @@ import com.intel.fibonaccicommon.Request;
 import com.intel.fibonaccicommon.Response;
 
 public class MainActivity extends Activity {
-	EditText editN;
-	TextView textOut;
+	static EditText editN;
+	static TextView textOut;
 	FibonacciManager manager;
 
 	@Override
@@ -29,6 +29,19 @@ public class MainActivity extends Activity {
 
 		manager = new FibonacciManager(this);
 	}
+	
+	@Override
+	protected void onStart() {
+		super.onStart();
+		manager.init();
+	}
+
+	@Override
+	protected void onStop() {
+		super.onDestroy();
+		manager.close();
+	}
+
 
 	/**
 	 * Called when button_go is clicked on.
@@ -43,7 +56,7 @@ public class MainActivity extends Activity {
 				listener);
 	}
 
-	Handler responseHandler = new Handler() {
+	static Handler responseHandler = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
 			super.handleMessage(msg);

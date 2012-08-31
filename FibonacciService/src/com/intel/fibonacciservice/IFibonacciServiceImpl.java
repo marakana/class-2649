@@ -1,6 +1,7 @@
 package com.intel.fibonacciservice;
 
 import android.os.RemoteException;
+import android.util.Log;
 
 import com.intel.fibonaccicommon.IFibListener;
 import com.intel.fibonaccicommon.IFibonacciService;
@@ -54,7 +55,12 @@ public class IFibonacciServiceImpl extends IFibonacciService.Stub {
 	public void asyncFib(Request request, IFibListener listener)
 			throws RemoteException {
 		Response response = this.fib(request);
-		listener.onResponse(response);
+		try {
+			listener.onResponse(response);
+		} catch (Exception e) {
+			Log.e("IFibSeviceImpl", "Looks like the client is gone!", e);
+			e.printStackTrace();
+		}
 	}
 
 }

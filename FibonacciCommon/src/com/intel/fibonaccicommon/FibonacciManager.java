@@ -17,13 +17,12 @@ public class FibonacciManager {
 	public FibonacciManager(Context context) {
 		this.context = context;
 		connection = new FibonacciServiceConnection();
-		context.bindService(INTENT, connection, Context.BIND_AUTO_CREATE);
 	}
 
-	@Override
-	protected void finalize() throws Throwable {
-		super.finalize();
-		
+	public void init() {
+		context.bindService(INTENT, connection, Context.BIND_AUTO_CREATE);		
+	}
+	public void close() {
 		context.unbindService(connection);
 	}
 
